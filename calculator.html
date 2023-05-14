@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+
+@font-face{
+ font-family:'digital-clock-font';
+ src: url('put_the_location_to_your_font.ttf or .otf');
+}
+
+        #div1{
+
+            width: 225px;
+            background-color: #333;
+            padding-bottom: 7px;
+            box-shadow: 10px 2px 1px #111;
+            border: 1px solid black;
+            border-radius: 1px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        input{
+
+            width: 91%;
+            height: 60px;
+            padding: 10px;
+            background-color: white;
+            color: black;
+            text-align: right;
+            font-size: 27px;
+            font-family:'digital-clock-font';
+            border: none;
+        }
+
+        button{
+
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 17px;
+            position: relative;
+            left: 2%;
+            top: 5px;
+            box-shadow: 5px 0 0 black;
+        }
+
+        button:active{
+
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 17px;
+            position: relative;
+            left: 2%;
+            top: 5px;
+            box-shadow: 0 0 0 black;
+            box-shadow: inset 0 0 0 1px black;
+        }
+
+        .opclass{
+
+            background-color: rgb(255, 140, 0);
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="div1" onselectstart="return false">
+
+        <input type="text" class="input1" disabled>
+
+        <div>
+            <button value="7">7</button>
+            <button value="8">8</button>
+            <button value="9">9</button>
+            <button value="+" class="opclass">+</button>
+        </div>
+        <div>
+            <button value="4">4</button>
+            <button value="5">5</button>
+            <button value="6">6</button>
+            <button value="-" class="opclass">-</button>  
+        </div>
+        <div>
+            <button value="1">1</button>
+            <button value="2">2</button>
+            <button value="3">3</button>
+            <button value="*" class="opclass">x</button>    
+        </div>
+        <div>
+            <button value="c" class="opclass">C</button>
+            <button value="0">0</button>
+            <button value="/" class="opclass">/</button>
+            <button value="=" class="opclass">=</button>  
+        </div>
+        <div>
+            <button value="pi" class="opclass">&pi;</button>
+            <button value="sin" class="opclass">SIN</button>
+            <button value="cos" class="opclass">COS</button>
+            <button value="rrenja" class="opclass" >&#8730;</button>  
+        </div>
+
+    </div>
+
+
+<script>
+
+var butona = document.querySelectorAll("button");
+var input1 = document.querySelector(".input1");
+
+for(var i=0; i<butona.length; i++){
+
+    butona[i].addEventListener("click", llogarit);
+}
+
+function llogarit(){
+
+    var vlera = this.value;
+
+    if(vlera != "="){
+
+        input1.value += vlera;
+    }
+
+    else{
+
+        input1.value=eval(input1.value);
+    }
+
+    if(vlera == "c"){
+
+        input1.value= "";
+    }
+
+    if(vlera == "pi"){
+
+        input1.value = Math.PI;
+    }
+
+    if(vlera == "sin"){
+
+        input1.value = Math.sin(parseInt(input1.value) * Math.PI / 180);
+    }
+
+    if(vlera == "cos"){
+
+        input1.value = Math.cos(parseInt(input1.value) * Math.PI / 180);
+    }
+
+    if(vlera == "rrenja"){
+
+        input1.value = Math.sqrt(parseInt(input1.value));
+    }
+
+
+}
+
+
+</script>
+    
+
+</body>
+</html>
